@@ -1,13 +1,16 @@
 import React from "react"
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
-import PersonIcon from '@material-ui/icons/Person'
+
+import BigNewsOver from "../components/big-news-over"
+import BigNews from "../components/big-news"
+import SmallNewsOver from "../components/small-news-over"
+import SmallNews from "../components/small-news"
+import RecentNews from "../components/recent-news"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import { Link } from "gatsby"
 
 const IndexPage = () => (
   <Layout>
@@ -15,65 +18,41 @@ const IndexPage = () => (
     <Grid container>
       <Grid container item xs={12}>
         <Grid item md={7}>
-          <div style={{ position: "relative" }}>
-            <img src={'/sampleimage.jpg'} />
-            <div style={{ color: "#fff",position: "absolute", bottom: 0, padding: "10px" }}>
-            {[["English", "english", "darkgreen"], ["News", "news", "darkgreen"], ["Premier League", "premierleague", "darkgreen"]].map(el =>
-                        <Link style={{ marginRight: 5,background: el[2], borderRadius: 3, color: "white", padding: 5, textDecoration: "none", fontSize: "small" }} to={"/" + el[1]}>
-                          {el[0]}
-                        </Link>)}
-                      <h3 style={{ fontSize: 22, fontWeight: "normal", marginTop: 10 }}>Premier League Review | Game Week 14</h3>
-                      <p style={{ fontSize: ".8rem", marginTop: -20 }}><CalendarTodayIcon style={{ fontSize: ".8rem" }} /> February 20, 2020   <PersonIcon style={{ fontSize: ".8rem" }} /> Dawit Tsehaye</p>
-            </div>
-          </div>
+          <BigNewsOver />
         </Grid>
-        <Grid item container md={5}>
-          {[1, 2, 3, 4].map(n => <Grid item xs={12} sm={6}>
-            <div style={{ position: "relative" }}>
-              <img src={'/sampleimage.jpg'} />
-              <div style={{ color: "#fff",position: "absolute", bottom: 0, padding: "10px" }}>
-                <h3 style={{ fontSize: 20, fontWeight: "normal" }}>Welcome to your new Gatsby site. 0{n}</h3>
-                <p style={{ fontSize: ".8rem", marginTop: -20 }}><CalendarTodayIcon style={{ fontSize: ".8rem" }} /> February 20, 2020   <PersonIcon style={{ fontSize: ".8rem" }} /> Dawit Tsehaye</p>
-              </div>
-            </div>
-          </Grid>)}
+        <Grid item container md={5} spacing={2} style={{ margin: "auto 0" }}>
+          {[1, 2, 3, 4].map(n => 
+          <SmallNewsOver data={n} />
+          )}
         </Grid>
       </Grid>
-      <Grid container item xs={12}>
-        <Grid item md={9}>
-          <Grid container style={{ margin: 10 }}>
+      <Grid container item xs={12} spacing={1}>
+        <Grid item md={8}>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <h3><span>English</span></h3>
+                  <h3 style={{
+                    borderBottom: "2px solid darkgreen",
+                    padding: 6,
+                    paddingLeft: 0
+                  }}><span style={{
+                    background: "darkgreen",
+                    color: "#fff",
+                    fontWeight: "normal",
+                    padding: "6px 12px",
+                    fontSize: 18
+                  }}>English</span></h3>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Paper>
-                    <img src={'/sampleimage.jpg'} />
-                    <div style={{ padding: "15px", marginTop: -30 }}>
-                      {[["English", "english", "darkgreen"], ["News", "news", "darkgreen"], ["Premier League", "premierleague", "darkgreen"]].map(el =>
-                        <Link style={{ marginRight: 5,background: el[2], borderRadius: 3, color: "white", padding: 5, textDecoration: "none", fontSize: "small" }} to={"/" + el[1]}>
-                          {el[0]}
-                        </Link>)}
-                      <h3 style={{ fontSize: 22, fontWeight: "normal", marginTop: 10 }}>Premier League Review | Game Week 14</h3>
-                      <p style={{ fontSize: ".8rem", marginTop: -20, color: "#888888" }}><CalendarTodayIcon style={{ fontSize: ".8rem" }} /> February 20, 2020   <PersonIcon style={{ fontSize: ".8rem" }} /> Dawit Tsehaye</p>
-                      <p style={{ marginTop: -16}}>With the first round set to be concluded by this week, the 14th round of fixtures saw table toppers Kidus</p>
-                    </div>
-                  </Paper>
+                  <BigNews />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Grid container>
-                    {[1,2,3,4,5,6].map(n => <Grid item xs={12}>
+                  <Grid container spacing={2}>
+                    {[1,2,3,4,5,6].map(n => 
+                    <Grid item xs={12}>
                       <Paper>
-                        <Grid container>
-                          <Grid item xs={6}>
-                            <img src={'/sampleimage.jpg'} />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <h3 style={{ fontSize: 20, fontWeight: "normal" }}>English. Right. {n}. Title.</h3>
-                            <p style={{ fontSize: ".8rem", marginTop: -20, color: "#888888" }}><CalendarTodayIcon style={{ fontSize: ".8rem" }} /> February 20, 2020   <PersonIcon style={{ fontSize: ".8rem" }} /> Dawit Tsehaye</p>
-                          </Grid>
-                        </Grid>
+                        <SmallNews data={n} />
                       </Paper>
                     </Grid>)}
                   </Grid>
@@ -81,28 +60,69 @@ const IndexPage = () => (
               </Grid>
             </Grid>
             <Grid container item xs={6}>
-              <Grid container item xs={12}>
+              <Grid container xs={12} spacing={2}>
                 <Grid item xs={12}>
-                  top and so on and so forth
+                  <h3 style={{
+                    borderBottom: "2px solid darkgreen",
+                    padding: 6,
+                    paddingLeft: 0
+                  }}><span style={{
+                    background: "darkgreen",
+                    color: "#fff",
+                    fontWeight: "normal",
+                    padding: "7px 12px",
+                    fontSize: 18
+                  }}>English</span></h3>
                 </Grid>
                 <Grid item xs={12}>
-                  second and so on ad so forth
+                  <BigNews />
+                </Grid>
+                <Grid item xs={12}>
+                  <Grid container spacing={2}>
+                    {[1,2,3,4,5,6].map(n => 
+                    <Grid item xs={12}>
+                      <Paper>
+                        <SmallNews data={n} />
+                      </Paper>
+                    </Grid>)}
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
             <Grid container item xs={6}>
-              <Grid container item xs={12}>
+              <Grid container xs={12} spacing={2}>
                 <Grid item xs={12}>
-                  top and so on and so forth
+                  <h3 style={{
+                    borderBottom: "2px solid darkgreen",
+                    padding: 6,
+                    paddingLeft: 0
+                  }}><span style={{
+                    background: "darkgreen",
+                    color: "#fff",
+                    fontWeight: "normal",
+                    padding: "7px 12px",
+                    fontSize: 18
+                  }}>English</span></h3>
                 </Grid>
                 <Grid item xs={12}>
-                  second and so on ad so forth
+                  <BigNews />
+                </Grid>
+                <Grid item xs={12}>
+                  <Grid container spacing={2}>
+                    {[1,2,3,4,5,6].map(n => 
+                    <Grid item xs={12}>
+                      <Paper>
+                        <SmallNews data={n} />
+                      </Paper>
+                    </Grid>)}
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-        <Grid container item xs={12} md={3}>
+        <Grid container item xs={12} md={4}>
+          <RecentNews />
           <div style={{ width: `100%`, marginBottom: `1.45rem` }}>
             <Image />
           </div>

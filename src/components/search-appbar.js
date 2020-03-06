@@ -7,6 +7,10 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import HomeIcon from '@material-ui/icons/Home'
+import Grid from '@material-ui/core/Grid'
+
+import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -52,6 +56,12 @@ const useStyles = makeStyles(theme => ({
   inputRoot: {
     color: 'inherit',
   },
+  link: {
+    color: "#fff",
+    textDecoration: "none",
+    fontSize: 14,
+    fontWeight: 600,
+  },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
@@ -71,7 +81,34 @@ export default function SearchAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appbar}>
-        <Toolbar>
+        <Toolbar style={{ margin: "auto 0px" }}>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+          >
+            <HomeIcon />
+          </IconButton>
+          <Grid container>
+            <Grid item xs={12} md><Link className={classes.link} to="/">መነሻ ገፅ</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/news-2">ዜናዎች</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/competitions">ውድድሮች</Link></Grid>
+              {/* <ul class="sub-menu">
+                <Link to className={classes.link}="/ethpl-2012">ፕሪምየር ሊግ</Link>
+                <Link to className={classes.link}="/eth-higher-league-2012">ከፍተኛ ሊግ</Link>
+                <Link to className={classes.link}="/eff-league-one-2012">አንደኛ ሊግ</Link>
+                <Link to className={classes.link}="/wpl-2012">ሴቶች ፕሪምየር ሊግ</Link>
+              </ul> */}
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/news-2/live-score">ቀጥታ</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/national-team/the-walias">ዋልያዎቹ</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/womens-football">ሴቶች</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/youth-football">ወጣቶች</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/news-2/players-abroad">ኢትዮጵያዊያን በውጭ</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/africa">አፍሪካ</Link></Grid>
+            <Grid item xs={12} md><Link className={classes.link} to="/football/category/english">English</Link></Grid>
+          </Grid>
+          {/* {[{name: "Setoch League", slug: "football/setochleague"}].map(el => <Link to={el.slug}>{el.name}</Link>)} */}
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -80,9 +117,6 @@ export default function SearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
