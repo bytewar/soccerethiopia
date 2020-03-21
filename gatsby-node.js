@@ -5,6 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-exports.onCreateNode = ({ node }) => {
-  console.log("HERE WE ARE: ",node.internal.type)
-}
+// exports.onCreateNode = ({ node }) => {
+//   console.log("HERE WE ARE: ",node.internal.type)
+// }
